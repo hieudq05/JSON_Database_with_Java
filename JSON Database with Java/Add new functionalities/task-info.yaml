@@ -1,0 +1,32 @@
+type: edu
+files:
+  - name: src/client/Main.java
+    visible: true
+    learner_created: false
+  - name: src/server/Main.java
+    visible: true
+    learner_created: false
+  - name: test/JsonDatabaseTest.java
+    visible: false
+    learner_created: false
+  - name: src/server/Service.java
+    visible: true
+    learner_created: true
+  - name: src/server/Server.java
+    visible: true
+    learner_created: true
+  - name: src/server/Session.java
+    visible: true
+    learner_created: true
+  - name: src/server/Args.java
+    visible: true
+    learner_created: true
+  - name: src/client/Client.java
+    visible: true
+    learner_created: true
+feedback_link: https://hyperskill.org/projects/65/stages/350/implement#comment
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Fri, 05 Sep 2025 08:18:45 UTC"
+record: -1
