@@ -5,7 +5,7 @@ import com.google.gson.Gson;
 import server.Args;
 
 import java.io.DataInputStream;
-import java.io.ObjectOutputStream;
+import java.io.DataOutputStream;
 import java.net.InetAddress;
 import java.net.Socket;
 
@@ -23,24 +23,24 @@ public class Client extends Thread {
 
     @Override
     public void run() {
-        Args argsParams = new Args();
-        JCommander.newBuilder()
-                .addObject(argsParams)
-                .build()
-                .parse(args);
-
         try (
                 Socket socket = new Socket(InetAddress.getByName(host), port);
-                ObjectOutputStream outputStream = new ObjectOutputStream(socket.getOutputStream());
+                DataOutputStream outputStream = new DataOutputStream(socket.getOutputStream());
                 DataInputStream inputStream = new DataInputStream(socket.getInputStream())
         ) {
             System.out.println("Client started!");
 
-            outputStream.writeObject(args);
-            System.out.println("Sent: " + gson.toJson(argsParams));
+            Args argsParams = new Args();
+            JCommander.newBuilder()
+                    .addObject(argsParams)
+                    .build()
+                    .parse(args);
 
-            String input = inputStream.readUTF();
-            System.out.println("Received: " + input);
+            String request = gson.toJson(argsParams);
+            outputStream.writeUTF(request);
+            System.out.println("Sent: " + request);
+
+            System.out.println("Received: " + inputStream.readUTF());
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

@@ -1,36 +1,68 @@
 package server;
 
+import com.beust.jcommander.JCommander;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class Database {
-    private final Map<String, String> database = new HashMap<>(1000);
+    private final Map<String, String> database;
+    private static final String ERROR = "ERROR";
+    private static final String OK = "OK";
 
-    public boolean set(String key, String value) {
+    public static final String GET_REQUEST = "get";
+    public static final String SET_REQUEST = "set";
+    public static final String DELETE_REQUEST = "delete";
+    public static final String EXIT_REQUEST = "exit";
+
+    public Database() {
+        database = new HashMap<>();
+    }
+
+    public Response processCommand(Args args) {
+        switch (args.getType()) {
+            case GET_REQUEST -> {
+                return get(args.getKey());
+            }
+            case SET_REQUEST -> {
+                return set(args.getKey(), args.getValue());
+            }
+            case DELETE_REQUEST -> {
+                return delete(args.getKey());
+            }
+            case EXIT_REQUEST -> {
+                return Response.builder().response(OK).build();
+            }
+            default -> {
+                return Response.builder().response(ERROR).reason("Unknown command").build();
+            }
+        }
+    }
+
+    public Response set(String key, String value) {
         if (isKeyAvailable(key)) {
             database.put(key, value);
-            return true;
+            return Response.builder().response(OK).build();
         }
-        return false;
+        return Response.builder().response(ERROR).reason("No such key").build();
     }
 
-    public String get(String key) {
-        if (!isKeyAvailable(key)) {
-            return "ERROR";
+    public Response get(String key) {
+        if (!isKeyAvailable(key) || !database.containsKey(key)) {
+            return Response.builder().response(ERROR).reason("No such key").build();
         }
-        String value = database.get(key);
-        return value == null ? "ERROR" : value;
+        return Response.builder().response(OK).value(database.get(key)).build();
     }
 
-    public boolean delete(String key) {
+    public Response delete(String key) {
         if (isKeyAvailable(key) && database.containsKey(key)) {
             database.remove(key);
-            return true;
+            return Response.builder().response(OK).build();
         }
-        return false;
+        return Response.builder().response(ERROR).reason("No such key").build();
     }
 
     public boolean isKeyAvailable(String key) {
-        return (key.length() >= 1 && key.length() <= 1000);
+        return (!key.isEmpty() && key.length() <= 1000);
     }
 }
