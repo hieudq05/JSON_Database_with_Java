@@ -6,6 +6,7 @@
     <content url="file://$MODULE_DIR$/../../../../../../../../../JSON Database with Java/task/build/generated/sources/headers/java/src" />
     <orderEntry type="jdk" jdkName="jbr-17" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: org.projectlombok:lombok:1.18.40" level="project" />
     <orderEntry type="library" name="Gradle: com.beust:jcommander:1.78" level="project" />
     <orderEntry type="library" name="Gradle: com.google.code.gson:gson:2.8.6" level="project" />
   </component>

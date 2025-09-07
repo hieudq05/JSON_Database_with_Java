@@ -12,15 +12,6 @@
             </PendingDiffInfo>
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/JSON Database with Java/task/src/server/Server.java">
-          <value>
-            <PendingDiffInfo>
-              <option name="filePath" value="$PROJECT_DIR$/JSON Database with Java/task/src/server/Server.java" />
-              <option name="originalContent" value="package server;&#10;&#10;import java.net.InetAddress;&#10;import java.net.ServerSocket;&#10;&#10;class Server extends Thread {&#10;&#10;    private String host;&#10;    private int port;&#10;    private int backlog;&#10;&#10;    public Server(String host, int port, int backlog) {&#10;        this.host = host;&#10;        this.port = port;&#10;        this.backlog = backlog;&#10;    }&#10;&#10;    @Override&#10;    public void run() {&#10;        try (&#10;                ServerSocket serverSocket = new ServerSocket(port, backlog, InetAddress.getByName(host));&#10;        ) {&#10;            System.out.println(&quot;Server started!&quot;);&#10;            while (true) {&#10;                Session session = new Session(serverSocket.accept());&#10;                session.start();&#10;            }&#10;        } catch (Exception e) {&#10;            System.out.println(e.getMessage());&#10;        }&#10;    }&#10;}&#10;" />
-              <option name="updatedContent" value="package server;&#10;&#10;import java.net.InetAddress;&#10;import java.net.ServerSocket;&#10;&#10;class Server extends Thread {&#10;&#10;    private String host;&#10;    private int port;&#10;    private int backlog;&#10;&#10;    public Server(String host, int port, int backlog) {&#10;        this.host = host;&#10;        this.port = port;&#10;        this.backlog = backlog;&#10;    }&#10;&#10;    @Override&#10;    public void run() {&#10;        try (&#10;                ServerSocket serverSocket = new ServerSocket(port, backlog, InetAddress.getByName(host));&#10;        ) {&#10;            System.out.println(&quot;Server started!&quot;);&#10;                Session session = new Session(serverSocket.accept());&#10;                Session session = new Session(serverSocket.accept());&#10;                session.start();&#10;            }&#10;        } catch (Exception e) {&#10;        }&#10;    }&#10;}&#10;&#10;" />
-            </PendingDiffInfo>
-          </value>
-        </entry>
         <entry key="$PROJECT_DIR$/JSON Database with Java/task/src/server/Service.java">
           <value>
             <PendingDiffInfo>

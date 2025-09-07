@@ -1,6 +1,7 @@
 package client;
 
 import com.beust.jcommander.JCommander;
+import com.google.gson.Gson;
 import server.Args;
 
 import java.io.DataInputStream;
@@ -12,6 +13,7 @@ public class Client extends Thread {
     private final String host;
     private final int port;
     private final String[] args;
+    private final Gson gson = new Gson();
 
     public Client(String host, int port, String[] args) {
         this.host = host;
@@ -35,7 +37,7 @@ public class Client extends Thread {
             System.out.println("Client started!");
 
             outputStream.writeObject(args);
-            System.out.println("Sent: " + argsParams.getType() + " " + argsParams.getIdx() + (argsParams.getMsg() == null ? "" : (" " + argsParams.getMsg())));
+            System.out.println("Sent: " + gson.toJson(argsParams));
 
             String input = inputStream.readUTF();
             System.out.println("Received: " + input);

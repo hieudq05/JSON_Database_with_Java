@@ -1,6 +1,7 @@
 package server;
 
 import com.beust.jcommander.JCommander;
+import com.google.gson.Gson;
 
 import java.io.DataOutputStream;
 import java.io.ObjectInputStream;
@@ -9,6 +10,7 @@ import java.net.Socket;
 public class Session extends Thread {
     private final Socket socket;
     private final Service service = Service.getInstance();
+    private Gson gson = new Gson();
 
     public Session(Socket socket) {
         this.socket = socket;
@@ -22,9 +24,9 @@ public class Session extends Thread {
         ) {
             Object input = inputStream.readObject();
 
-            String output = service.processCommand(input);
+            Response response = service.processCommand(input);
 
-            outputStream.writeUTF(output);
+            outputStream.writeUTF(gson.toJson(response));
 
             Args args = new Args();
 

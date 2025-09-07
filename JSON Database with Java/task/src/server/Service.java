@@ -2,8 +2,6 @@ package server;
 
 import com.beust.jcommander.JCommander;
 
-import java.util.Map;
-
 public class Service {
     private static Service instance;
     private final Database database = new Database();
@@ -22,7 +20,7 @@ public class Service {
         server.start();
     }
 
-    public String processCommand(Object argsParams) {
+    public Response processCommand(Object argsParams) {
         Args args = new Args();
 
         JCommander.newBuilder()
@@ -31,15 +29,23 @@ public class Service {
                 .parse((String[]) argsParams);
 
         return switch (args.getType()) {
-            case "get" -> database.get(args.getIdx());
-            case "delete" -> database.delete(args.getIdx()) ? "OK" : "ERROR";
-            case "set" -> database.set(args.getIdx(), args.getMsg()) ? "OK" : "ERROR";
-            case "exit" -> "OK";
-            default -> "ERROR";
+            case "get" -> {
+                String result = database.get(args.getKey());
+                yield result.equals("ERROR") ?
+                        Response.builder().response("ERROR").reason("No such key").build() :
+                        Response.builder().response("OK").value(result).build();
+            }
+            case "delete" ->
+                    database.delete(args.getKey()) ?
+                            Response.builder().response("OK").build() :
+                            Response.builder().response("ERROR").reason("No such key").build();
+            case "set" -> database.set(args.getKey(), args.getValue()) ?
+                    Response.builder().response("OK").build() :
+                    Response.builder().response("ERROR").build();
+            case "exit" ->
+                    Response.builder().response("OK").build();
+            default ->
+                    Response.builder().response("ERROR").build();
         };
-    }
-
-    public Map<Integer, String> getDatabase() {
-        return database.getDatabase();
     }
 }

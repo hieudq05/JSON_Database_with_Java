@@ -9,5 +9,8 @@ programming_language_version: 11
 content:
   - JSON Database with Java
   - Topics
+additional_files:
+  - name: build.gradle
+  - name: settings.gradle
 mode: Study
 yaml_version: 4

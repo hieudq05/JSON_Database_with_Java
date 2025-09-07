@@ -6,12 +6,48 @@ files:
   - name: src/server/Main.java
     visible: true
     learner_created: false
+  - name: src/server/Service.java
+    visible: true
+    learner_created: false
+  - name: src/server/Server.java
+    visible: true
+    learner_created: false
+  - name: src/server/Session.java
+    visible: true
+    learner_created: false
+  - name: src/server/Args.java
+    visible: true
+    learner_created: false
+  - name: src/client/Client.java
+    visible: true
+    learner_created: false
   - name: test/JsonDatabaseTest.java
     visible: false
     learner_created: false
   - name: test/JsonFinder.java
     visible: false
     learner_created: false
+  - name: src/config/ArgsGsonSerializer.java
+    visible: true
+    learner_created: true
+  - name: src/server/Response.java
+    visible: true
+    learner_created: true
 feedback_link: https://hyperskill.org/projects/65/stages/351/implement#comment
-status: Unchecked
+status: Failed
+feedback:
+  message: |-
+    Wrong answer in test #2
+
+    Can&#39;t find request JSON object in the output.
+    It should contain &#39;type&#39; key
+
+    Please find below the output of your program during this failed test.
+
+    ---
+
+    Arguments for Main: -t get -k 1
+
+    Address already in use
+  time: "Sun, 07 Sep 2025 07:19:58 UTC"
 record: -1

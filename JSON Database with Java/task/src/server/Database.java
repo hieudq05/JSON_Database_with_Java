@@ -4,9 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Database {
-    private final Map<Integer, String> database = new HashMap<>(1000);
+    private final Map<String, String> database = new HashMap<>(1000);
 
-    public boolean set(int key, String value) {
+    public boolean set(String key, String value) {
         if (isKeyAvailable(key)) {
             database.put(key, value);
             return true;
@@ -14,7 +14,7 @@ public class Database {
         return false;
     }
 
-    public String get(int key) {
+    public String get(String key) {
         if (!isKeyAvailable(key)) {
             return "ERROR";
         }
@@ -22,19 +22,15 @@ public class Database {
         return value == null ? "ERROR" : value;
     }
 
-    public boolean delete(int key) {
-        if (isKeyAvailable(key)) {
+    public boolean delete(String key) {
+        if (isKeyAvailable(key) && database.containsKey(key)) {
             database.remove(key);
             return true;
         }
         return false;
     }
 
-    public boolean isKeyAvailable(int key) {
-        return (key >= 1 && key <= 1000);
-    }
-
-    public Map<Integer, String> getDatabase() {
-        return database;
+    public boolean isKeyAvailable(String key) {
+        return (key.length() >= 1 && key.length() <= 1000);
     }
 }

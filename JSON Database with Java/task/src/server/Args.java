@@ -6,21 +6,21 @@ public class Args {
     @Parameter(names = {"-t"}, description = "Type of request")
     private String type;
 
-    @Parameter(names = {"-i"}, description = "Index of the cell")
-    private int idx;
+    @Parameter(names = {"-k"}, description = "Index of the cell")
+    private String key;
 
-    @Parameter(names = {"-m"}, description = "Value to set")
-    private String msg;
+    @Parameter(names = {"-v"}, description = "Value to set")
+    private String value;
 
     public String getType() {
         return type;
     }
 
-    public int getIdx() {
-        return idx;
+    public String getKey() {
+        return key;
     }
 
-    public String getMsg() {
-        return msg;
+    public String getValue() {
+        return value;
     }
 }
