@@ -12,6 +12,9 @@ public class Args {
     @Parameter(names = {"-v"}, description = "Value to set")
     private String value;
 
+    @Parameter(names = {"-in"}, description = "Request")
+    private String in;
+
     public String getType() {
         return type;
     }
@@ -22,5 +25,9 @@ public class Args {
 
     public String getValue() {
         return value;
+    }
+
+    public String getIn() {
+        return in;
     }
 }

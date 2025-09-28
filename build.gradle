@@ -32,6 +32,13 @@ subprojects {
         implementation "com.beust:jcommander:1.78"
         implementation 'com.google.code.gson:gson:2.8.6'
         testImplementation 'com.github.hyperskill:hs-test:release-SNAPSHOT'
+
+        // Lombok
+        compileOnly("org.projectlombok:lombok:1.18.42")
+        annotationProcessor("org.projectlombok:lombok:1.18.42")
+
+        testCompileOnly("org.projectlombok:lombok:1.18.42")
+        testAnnotationProcessor("org.projectlombok:lombok:1.18.42")
     }
 
     configurations.all {

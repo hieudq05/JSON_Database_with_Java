@@ -1,12 +1,22 @@
 package server;
 
-import com.beust.jcommander.JCommander;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock.WriteLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock.ReadLock;
 
 public class Database {
-    private final Map<String, String> database;
+    private Map<String, String> database;
+    private final ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
+    private Path pathDb = Paths.get(System.getProperty("user.dir") + "/src/server/data/db.json");
     private static final String ERROR = "ERROR";
     private static final String OK = "OK";
 
@@ -16,7 +26,19 @@ public class Database {
     public static final String EXIT_REQUEST = "exit";
 
     public Database() {
-        database = new HashMap<>();
+       database = readDb();
+    }
+
+    private Map<String, String> readDb() {
+        try {
+            String data = new String(Files.readAllBytes(pathDb));
+            Map<String, String> database;
+            Type mapType = new TypeToken<Map<String, String>>(){}.getType();
+            database = data.isEmpty() ? new HashMap<>() : new Gson().fromJson(data, mapType);
+            return database;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public Response processCommand(Args args) {
@@ -37,29 +59,52 @@ public class Database {
                 return Response.builder().response(ERROR).reason("Unknown command").build();
             }
         }
+
     }
 
-    public Response set(String key, String value) {
+    public synchronized Response set(String key, String value) {
+        WriteLock writeLock = lock.writeLock();
+        writeLock.lock();
         if (isKeyAvailable(key)) {
             database.put(key, value);
+            writeToDb();
+            writeLock.unlock();
             return Response.builder().response(OK).build();
         }
         return Response.builder().response(ERROR).reason("No such key").build();
     }
 
-    public Response get(String key) {
+    public synchronized Response get(String key) {
+        ReadLock readLock = lock.readLock();
+        readLock.lock();
         if (!isKeyAvailable(key) || !database.containsKey(key)) {
+            readLock.unlock();
             return Response.builder().response(ERROR).reason("No such key").build();
         }
-        return Response.builder().response(OK).value(database.get(key)).build();
+        Response response = Response.builder().response(OK).value(database.get(key)).build();
+        readLock.unlock();
+        return response;
     }
 
-    public Response delete(String key) {
+    public synchronized Response delete(String key) {
+        WriteLock writeLock = lock.writeLock();
+        writeLock.lock();
         if (isKeyAvailable(key) && database.containsKey(key)) {
             database.remove(key);
+            writeToDb();
+            writeLock.unlock();
             return Response.builder().response(OK).build();
         }
+        writeLock.unlock();
         return Response.builder().response(ERROR).reason("No such key").build();
+    }
+
+    public void writeToDb() {
+        try {
+            Files.write(pathDb, new Gson().toJson(database).getBytes());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public boolean isKeyAvailable(String key) {

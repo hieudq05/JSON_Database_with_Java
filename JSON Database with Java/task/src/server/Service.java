@@ -1,11 +1,10 @@
 package server;
 
-import com.beust.jcommander.JCommander;
-
 public class Service {
     private static Service instance;
 
-    private Service() {}
+    private Service() {
+    }
 
     public static Service getInstance() {
         if (instance == null) {
