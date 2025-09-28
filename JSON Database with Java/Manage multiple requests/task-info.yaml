@@ -6,6 +6,21 @@ files:
   - name: src/server/Main.java
     visible: true
     learner_created: false
+  - name: src/server/Service.java
+    visible: true
+    learner_created: false
+  - name: src/server/Server.java
+    visible: true
+    learner_created: false
+  - name: src/server/Session.java
+    visible: true
+    learner_created: false
+  - name: src/server/Args.java
+    visible: true
+    learner_created: false
+  - name: src/server/Response.java
+    visible: true
+    learner_created: false
   - name: test/JsonDatabaseTest.java
     visible: false
     learner_created: false
@@ -15,6 +30,9 @@ files:
   - name: test/JsonRequestBuilder.java
     visible: false
     learner_created: false
+  - name: src/client/Client.java
+    visible: true
+    learner_created: true
 feedback_link: https://hyperskill.org/projects/65/stages/352/implement#comment
 status: Unchecked
 record: -1

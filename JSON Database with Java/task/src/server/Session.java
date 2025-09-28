@@ -31,7 +31,6 @@ public class Session extends Thread {
             Args args = gson.fromJson(input, Args.class);
             Response response = service.processCommand(args, database);
             outputStream.writeUTF(gson.toJson(response));
-
             if (args.getType().equals("exit")) {
                 running.set(false);
             }

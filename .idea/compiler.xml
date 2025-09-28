@@ -3,40 +3,6 @@
   <component name="CompilerConfiguration">
     <annotationProcessing>
       <profile default="true" name="Default" enabled="true" />
-      <profile name="Gradle Imported" enabled="true">
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="false">
-          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.40/398c6d2d7c42c96b65e78d2ddc9be0058c163453/lombok-1.18.40.jar" />
-        </processorPath>
-        <module name="JSON_Database_with_Java.JSON_Database_with_Java-task.test" />
-        <module name="JSON_Database_with_Java.JSON_Database_with_Java-task-build-reports-tests.main" />
-        <module name="JSON_Database_with_Java.Topics-Throwing_exceptions-Throw_an_unchecked_exception.test" />
-        <module name="JSON_Database_with_Java.JSON_Database_with_Java-task-build-tmp.main" />
-        <module name="JSON_Database_with_Java.Topics-Throwing_exceptions-Theory.test" />
-        <module name="JSON_Database_with_Java.JSON_Database_with_Java-task-build-classes-java.test" />
-        <module name="JSON_Database_with_Java.JSON_Database_with_Java-task-build-generated-sources-annotationProcessor-java.main" />
-        <module name="JSON_Database_with_Java.util.main" />
-        <module name="JSON_Database_with_Java.JSON_Database_with_Java-task-build-test-results.main" />
-        <module name="JSON_Database_with_Java.util.test" />
-        <module name="JSON_Database_with_Java.JSON_Database_with_Java-task-build-tmp.test" />
-        <module name="JSON_Database_with_Java.Topics-Throwing_exceptions-Throw_an_IOException.test" />
-        <module name="JSON_Database_with_Java.JSON_Database_with_Java-task-build-generated-sources-annotationProcessor-java.test" />
-        <module name="JSON_Database_with_Java.JSON_Database_with_Java-task-build-reports-tests.test" />
-        <module name="JSON_Database_with_Java.JSON_Database_with_Java-task-build-test-results.test" />
-        <module name="JSON_Database_with_Java.JSON_Database_with_Java-task.main" />
-        <module name="JSON_Database_with_Java.Topics-Throwing_exceptions-Possible_declaration.test" />
-        <module name="JSON_Database_with_Java.Topics-Throwing_exceptions-The_most_general_statement.test" />
-        <module name="JSON_Database_with_Java.Topics-Throwing_exceptions-Days_of_the_week.main" />
-        <module name="JSON_Database_with_Java.JSON_Database_with_Java-task-build-generated-sources-headers-java.main" />
-        <module name="JSON_Database_with_Java.Topics-Throwing_exceptions-Days_of_the_week.test" />
-        <module name="JSON_Database_with_Java.JSON_Database_with_Java-task-build-generated-sources-headers-java.test" />
-        <module name="JSON_Database_with_Java.JSON_Database_with_Java-task-build-classes-java.main" />
-        <module name="JSON_Database_with_Java.Topics-Throwing_exceptions-Possible_declaration.main" />
-        <module name="JSON_Database_with_Java.Topics-Throwing_exceptions-The_most_general_statement.main" />
-        <module name="JSON_Database_with_Java.Topics-Throwing_exceptions-Theory.main" />
-        <module name="JSON_Database_with_Java.Topics-Throwing_exceptions-Throw_an_IOException.main" />
-        <module name="JSON_Database_with_Java.Topics-Throwing_exceptions-Throw_an_unchecked_exception.main" />
-      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="17" />
   </component>
