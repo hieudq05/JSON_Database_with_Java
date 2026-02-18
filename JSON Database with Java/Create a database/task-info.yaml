@@ -7,7 +7,6 @@ files:
     visible: true
     learner_created: false
   - name: test/JsonDatabaseTest.java
-    visible: false
     learner_created: false
 feedback_link: https://hyperskill.org/projects/65/stages/348/implement#comment
 status: Solved

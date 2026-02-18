@@ -1,23 +1,15 @@
 package server;
 
-import com.google.gson.Gson;
-
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.net.Socket;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Session extends Thread {
     private final Socket socket;
-    private Database database;
-    private AtomicBoolean running;
     private final Service service = Service.getInstance();
-    private Gson gson = new Gson();
 
-    public Session(Socket socket, Database database, AtomicBoolean running) {
+    public Session(Socket socket) {
         this.socket = socket;
-        this.database = database;
-        this.running = running;
     }
 
     @Override
@@ -26,16 +18,18 @@ public class Session extends Thread {
                 DataOutputStream outputStream = new DataOutputStream(socket.getOutputStream());
                 DataInputStream inputStream = new DataInputStream(socket.getInputStream())
         ) {
-            String input = inputStream.readUTF();
+            String requestJson = inputStream.readUTF();
 
-            Args args = gson.fromJson(input, Args.class);
-            Response response = service.processCommand(args, database);
-            outputStream.writeUTF(gson.toJson(response));
-            if (args.getType().equals("exit")) {
-                running.set(false);
+            String responseJson = service.processCommand(requestJson);
+
+            outputStream.writeUTF(responseJson);
+
+            // Check if it's exit command
+            if (requestJson.contains("\"type\":\"exit\"") || requestJson.contains("\"type\": \"exit\"")) {
+                System.exit(0);
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 }

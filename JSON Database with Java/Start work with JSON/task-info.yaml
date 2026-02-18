@@ -19,10 +19,8 @@ files:
     visible: true
     learner_created: false
   - name: test/JsonDatabaseTest.java
-    visible: false
     learner_created: false
   - name: test/JsonFinder.java
-    visible: false
     learner_created: false
   - name: src/server/Response.java
     visible: true

@@ -6,15 +6,40 @@ files:
   - name: src/server/Main.java
     visible: true
     learner_created: false
+  - name: src/server/Service.java
+    visible: true
+    learner_created: false
+  - name: src/server/Server.java
+    visible: true
+    learner_created: false
+  - name: src/server/Session.java
+    visible: true
+    learner_created: false
+  - name: src/server/Args.java
+    visible: true
+    learner_created: false
+  - name: src/server/Response.java
+    visible: true
+    learner_created: false
+  - name: src/client/Client.java
+    visible: true
+    learner_created: false
+  - name: src/server/data/db.json
+    visible: true
+    learner_created: false
   - name: test/JsonDatabaseTest.java
-    visible: false
     learner_created: false
   - name: test/JsonFinder.java
-    visible: false
     learner_created: false
   - name: test/JsonRequestBuilder.java
-    visible: false
     learner_created: false
+  - name: src/client/Args.java
+    visible: true
+    learner_created: true
 feedback_link: https://hyperskill.org/projects/65/stages/353/implement#comment
-status: Unchecked
+status: Solved
+feedback:
+  message: Well done! You've finished the project. Select a new project on <a href="https://hyperskill.org/projects">Hyperskill</a>
+    to continue learning.
+  time: "Wed, 18 Feb 2026 11:37:48 UTC"
 record: -1

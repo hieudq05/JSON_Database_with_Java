@@ -1,7 +1,5 @@
 content:
-  - Theory
+  - Throwing exceptions
   - Throw an unchecked exception
-  - Possible declaration
   - Days of the week
   - Throw an IOException
-  - The most general statement

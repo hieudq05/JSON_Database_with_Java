@@ -18,17 +18,11 @@ files:
   - name: src/server/Args.java
     visible: true
     learner_created: false
-  - name: src/server/Response.java
-    visible: true
-    learner_created: false
   - name: test/JsonDatabaseTest.java
-    visible: false
     learner_created: false
   - name: test/JsonFinder.java
-    visible: false
     learner_created: false
   - name: test/JsonRequestBuilder.java
-    visible: false
     learner_created: false
   - name: src/client/Client.java
     visible: true
@@ -41,4 +35,4 @@ status: Solved
 feedback:
   message: Congratulations!
   time: "Sun, 28 Sep 2025 09:50:37 UTC"
-record: -1
+record: 5

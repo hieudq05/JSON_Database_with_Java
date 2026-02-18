@@ -1,0 +1,15 @@
+type: choice
+is_multiple_choice: false
+options:
+  - text: public static void method() throws Exception
+  - text: public static void method() throw Exception
+  - text: public static void method()
+  - text: public static Exception method()
+files:
+  - name: src/Task.java
+    visible: true
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/2816#comment
+status: Solved
+record: -1
+local_check: false
